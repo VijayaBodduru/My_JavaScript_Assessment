@@ -1,0 +1,202 @@
+<html>
+    <head>
+       
+        
+        <style type="text/css">
+
+         *{ margin:0; padding:0; box-sizing: border-box;}   
+
+         body{ font-family: sans-serif;}
+
+        .container{display:flex; flex-direction: row;}    
+            
+        #leftpart {display:flex; flex-direction: column;justify-content:space-around;width:50%; height:600px; background-color:rgb(197, 19, 49);padding: 10px 20px; }
+        #logo {width:50%; height:10px; background-color:rgb(197, 19, 49); ;}
+        #image {background-repeat:no-repeat;background-size: contain;background-position: center;height:90%;padding-left: 200px;}
+        #text {text-align: center;color: white;font-size:25px;}
+
+        
+        #rightpart {width:50%; 
+                    height:600px; 
+                    background-color:rgb(24, 190, 219); 
+                    float:left; }
+
+        form{display:flex;flex-direction: column;justify-content:center;width:45%;box-shadow: 2px 2px 4px rgba(0,0,0,0.1);padding: 50px;}
+        
+        #title{font-size: 25px;font-weight: bold;margin-bottom: 20px;}
+        form div input{width:100%;height:25px;border-radius: 8px;outline: none;border: 1px solid #c4c4c4;padding:0 30px;box-shadow: 2px 2px 4px rgba(0,0,0,0.1);}
+        label {display: block;margin-bottom: 5px;}
+        form div {position:relative; margin-bottom: 10px;}
+       
+
+        #signup{display: flex; flex-direction: row;justify-content: space-between; gap:15px;}
+        #gsignup{width:100%;padding: 10px 5px;display: flex;gap:15px;justify-content: center;align-items: center;border: 2px solid #c4c4c4;border-radius: 8px;box-shadow: 2px 2px 4px rgba(0,0,0,0.1);cursor:pointer;}
+        #fsignup{width:100%;padding: 10px 5px;display: flex;gap:15px;justify-content: center;align-items: center;border: 2px solid #c4c4c4;border-radius: 8px;box-shadow: 2px 2px 4px rgba(0,0,0,0.1);cursor:pointer;}
+        #fsignup{background-color: #4f70b5;color: white;}
+        
+        #or{text-align: center;}
+
+        input:focus {
+            border:2px solid #f2796e;}
+
+        #question{font-size:15px;} 
+        span{color:#f2796e;cursor:pointer;}   
+
+       
+
+        .error{font-size: 14.5px; margin-top: 5px;}
+
+        button{margin-top: 15px;width:100%;height:45px;background-color: #f2796e;border: 2px solid #f2796e; border-radius: 8px; color: #fff;font-size: 20px;cursor: pointer;
+               box-shadow: 2px 2px 4px rgba(0,0,0,0.1);transition: all 0.1s ease;}
+        button:hover{opacity: 0.8;}       
+
+
+        </style>
+
+    <title>submission form</title> 
+    </head>
+    <body>
+      <div class="container"> 
+        <div id="leftpart">
+            <div id="logo"><img src="nablogo.png" alt="" /> </div>
+            <div id="image"><img src="nab-internet.png" alt="" /> </div>
+            <div id="text">Life is about more than money!</div>
+        </div>
+        <form id="rightpart" method="post" name="myform" onsubmit="return validations()" action="newHTML.html">
+            
+            <div id="social">
+                <div id="title">Get Started</div>
+                <div id="question">Already Have an Account?<br/><span>Sign In</span></div>
+                <div id="signup">
+                    <div id="gsignup"><img src="https://img.icons8.com/color/30/000000/google-logo.png" /> Sign Up </div>
+                    <div id="fsignup"><img src="https://img.icons8.com/ios-filled/30/ffffff/facebook-new.png" /> Sign Up </div>
+                </div>
+                <div id="or">Or</div>
+            </div>
+
+
+            
+            <div>
+                <label for="username">Customer Name</label>
+                <input type="text" name="username" id="uname" placeholder="Enter your name"/>
+               
+            </div> 
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="mymail" placeholder="abc@gmail.com"/>
+            </div> 
+            
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="pwd" placeholder="Password here"/>
+            </div>
+
+            <div>
+                <label for="cpassword">Confirm Password</label>
+                <input type="password" name="cpassword" id="cpwd" placeholder="Confirm Password here"/>
+            </div>
+
+            <div>
+                <label for="number">Phone Number</label>
+                <input type="number" name="mobile" id="mob">
+                            
+            </div>
+
+            <div>
+                <label for="dateofbirth">Date of Birth</label>
+                <input type="date" name="mydate" id="dobInput">
+            </div>  
+
+            <button type="submit" id="submit">Submit</button>
+
+        </div>
+            </form>
+          <script>
+
+            function validations() {
+
+           
+                     let username=document.getElementById("uname").value;
+
+                     let mymail=document.getElementById("mymail").value;
+                     let attherate=mymail.indexOf("@");
+                     let atthedot=mymail.lastIndexOf(".");
+
+                     let password=document.getElementById("pwd").value;
+                     let cpassword=document.getElementById("cpwd").value;
+
+                     let mobile=document.getElementById("mob").value;
+
+                     let dobInput=document.getElementById("dobInput").value;
+                     let currentdate= new Date();
+                     let enteredDate= new Date(dobInput);
+                     
+                    
+
+                     //user name validation
+
+                     if (username == "null" || username == "")
+                        {
+                           alert("enter correctname");
+                           return false;
+                        }
+
+                     //email validation    
+
+                     if (attherate<1 || atthedot<attherate+3 || atthedot>=mymail.length)
+                       {
+                     alert("enter the correct email");
+                     return false;
+                       } 
+
+
+                     //Password validation  
+
+                     if (password.length<6)
+                        {
+                            alert("enter the 6 charcters for password")
+                            return false;
+                        }
+                     
+                     if (password!==cpassword)
+                          {
+                           alert("Both passwords must be same")
+                           return false;
+                          }   
+                          
+                     //Phone number validation
+                     
+                     if (mobile.length!==10)
+                      
+                         {
+                           alert("enter the correct 10 digits number");
+                           return false;
+                         }
+
+                     //Date of Birth validation 
+                     
+                     if (dobInput==null)
+                     {
+                        alert("enter valid date");
+                        return false;
+                     }
+                     
+                     if (enteredDate > currentdate)
+                        {
+                           alert("enter the date which is not in future");
+                           return false;
+                        } 
+                      
+
+                    }  
+          </script>
+
+            
+            
+           
+        </form> 
+       
+    </body>
+    
+</html>
